@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Pressable } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Square from "./components/Square";
@@ -7,9 +7,15 @@ import CountdownTimer from "./components/Timer";
 
 function SquareScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#d3d3d3",
+      }}
+    >
       <Square />
-      <Text>Square Screen</Text>
       <Button
         title={"Go To Timers"}
         onPress={() => navigation.navigate("Timers")}
@@ -20,10 +26,15 @@ function SquareScreen({ navigation }) {
 
 function TimerScreen({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#d3d3d3",
+      }}
+    >
       <CountdownTimer />
-      <Text>Timer Screen</Text>
-      <Button title={"Go Back"} onPress={() => navigation.goBack()} />
     </View>
   );
 }

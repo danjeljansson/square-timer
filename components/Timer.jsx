@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, ScrollView, Button } from "react-native";
+import { View, Text, ScrollView, Pressable, Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const CountdownTimer = () => {
@@ -68,45 +68,85 @@ const CountdownTimer = () => {
 
   return (
     <ScrollView>
-      <Text style={{ fontSize: 20, marginBottom: 10 }}>Countdown Timers</Text>
       {timers.map((timer, index) => (
         <View
           key={index}
           style={{
             flexDirection: "row",
-            alignItems: "center",
-            backgroundColor: "lightblue",
-            margin: 6,
+            margin: 8,
+            backgroundColor: "#000000",
+            justifyContent: "space-between",
+            padding: 6,
+            borderRadius: 4,
           }}
         >
-          <Text style={{ marginRight: 10 }}>
+          <Text
+            style={{
+              alignItems: "center",
+              color: "black",
+              backgroundColor: "#eeeeee",
+              width: 50,
+              height: 30,
+              padding: 4,
+              borderRadius: 5,
+              overflow: "hidden",
+              textAlign: "center",
+              lineHeight: 20,
+            }}
+          >
             {timer.time === 0 ? "Done" : timer.time}
           </Text>
-          <TouchableOpacity onPress={() => togglePause(index)}>
-            <Text style={{ color: "black", paddingHorizontal: 2 }}>
-              {timer.paused ? "Play" : "Pause"}
-            </Text>
-          </TouchableOpacity>
+
+          <View>
+            <Pressable
+              onPress={() => togglePause(index)}
+              style={{
+                backgroundColor: "#979797",
+                padding: 2,
+                borderRadius: 4,
+                height: 30,
+                width: 50,
+              }}
+            >
+              <Text
+                style={{
+                  padding: 4,
+                  color: "black",
+                }}
+              >
+                {timer.paused ? "Play" : "Pause"}
+              </Text>
+            </Pressable>
+          </View>
         </View>
       ))}
 
-      <Button onPress={addTimer} title={"add timer"}>
-        {/*<Text*/}
-        {/*  style={{*/}
-        {/*    alignItems: "center",*/}
-        {/*    justifyContent: "center",*/}
-        {/*    margin: 16,*/}
-        {/*    paddingVertical: 12,*/}
-        {/*    paddingHorizontal: 32,*/}
-        {/*    backgroundColor: "steelblue",*/}
-        {/*    fontSize: 16,*/}
-        {/*    lineHeight: 21,*/}
-        {/*    fontWeight: "bold",*/}
-        {/*    letterSpacing: 0.25,*/}
-        {/*    color: "white",*/}
-        {/*  }}*/}
-        {/*></Text>*/}
-      </Button>
+      <Pressable
+        onPress={addTimer}
+        style={{
+          marginTop: 10,
+          alignItems: "center",
+          justifyContent: "center",
+          paddingVertical: 12,
+          paddingHorizontal: 32,
+          borderRadius: 4,
+          elevation: 3,
+          backgroundColor: "#0088cc",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 16,
+            lineHeight: 21,
+            fontWeight: "bold",
+            letterSpacing: 0.25,
+            color: "white",
+          }}
+        >
+          Add Timer
+        </Text>
+      </Pressable>
+      <Button title={"Go Back"} onPress={() => navigation.goBack()}></Button>
     </ScrollView>
   );
 };
