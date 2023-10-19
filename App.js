@@ -30,11 +30,11 @@ function TimerScreen({ navigation }) {
       style={{
         flex: 1,
         alignItems: "center",
-        justifyContent: "center",
         backgroundColor: "#d3d3d3",
       }}
     >
       <CountdownTimer />
+      <Button title={"Go Back"} onPress={() => navigation.goBack()}></Button>
     </View>
   );
 }

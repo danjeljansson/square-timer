@@ -54,7 +54,7 @@ const CountdownTimer = () => {
       });
   }
 
-  function loadTimers() {
+  function loadTimers(navigation) {
     AsyncStorage.getItem("timers")
       .then((value) => {
         if (value !== null) {
@@ -146,7 +146,6 @@ const CountdownTimer = () => {
           Add Timer
         </Text>
       </Pressable>
-      <Button title={"Go Back"} onPress={() => navigation.goBack()}></Button>
     </ScrollView>
   );
 };
